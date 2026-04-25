@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA1.07 - Mapas de Red y Documentación | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-font { font-family: 'Fira Code', monospace; }
+        .mermaid { background: white; border-radius: 0.5rem; padding: 1rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">RA1</span>
+                <h1 class="text-lg font-bold text-slate-800">Mapas de Red y Documentación</h1>
+            </div>
+            <div class="text-sm text-slate-500 italic">Módulo: Sistemas Informáticos</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+        <!-- Introduction Section -->
+        <section class="space-y-6">
+            <div class="border-l-4 border-orange-500 pl-4">
+                <h2 class="text-3xl font-extrabold text-slate-800">1.7 Interpretación de Mapas Físicos y Lógicos</h2>
+                <p class="text-slate-600 mt-2 text-lg">La importancia de la documentación técnica para la gestión, mantenimiento y escalabilidad de las redes.</p>
+            </div>
+            <p class="text-slate-700">
+                Un administrador de sistemas no puede gestionar una red basándose únicamente en el conocimiento empírico. Es fundamental contar con documentación precisa que permita identificar dónde se encuentra un dispositivo físicamente y cómo se comporta la red a nivel de datos. Para ello, se utilizan dos tipos de representaciones: el <strong>Mapa Físico</strong> y el <strong>Mapa Lógico</strong>.
+            </p>
+        </section>
+
+        <!-- Physical Map Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                El Mapa Físico (Topología Física)
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4 text-slate-700">
+                    <p>El mapa físico es una representación exacta de la ubicación real del hardware y el tendido de cables. Se centra en el "Dónde" y el "Cómo está conectado".</p>
+                    
+                    <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                        <strong class="block text-blue-800 mb-1">Elementos Clave del Mapa Físico:</strong>
+                        <ul class="text-sm space-y-2 list-disc pl-4">
+                            <li><strong>Ubicación de Racks:</strong> Posición exacta del armario de comunicaciones en la planta.</li>
+                            <li><strong>Etiquetado de Cables:</strong> Identificación de cada cable (ej. <code>S-01-P05 &rarr; PC-12</code>).</li>
+                            <li><strong>Planos de Cableado:</strong> Trazado de las canaletas, conductos y tomas de pared (rosetas RJ-45).</li>
+                            <li><strong>Puertos Físicos:</strong> Identificación de qué puerto del Switch se conecta a qué toma de la oficina.</li>
+                        </ul>
+                    </div>
+                    <p class="text-sm italic">Es esencial para el mantenimiento correctivo: si un cable se rompe, el mapa físico indica exactamente qué tramo de pared o qué puerto del rack debe revisarse.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-center font-bold text-slate-500 mb-4">Ejemplo de Representación Física</h4>
+                    <div class="mermaid">
+                        graph TD
+                            Rack[Armario de Red - Rack A]
+                            S1[Switch Puerto 1] --- T1[Toma Pared Oficina 1]
+                            S1 --- T2[Toma Pared Oficina 2]
+                            S1 --- T3[Toma Pared Oficina 3]
+                            T1 --- PC1[PC Usuario 1]
+                            T2 --- PC2[PC Usuario 2]
+                            T3 --- PC3[PC Usuario 3]
+                            
+                            style Rack fill:#f8fafc,stroke:#64748b,stroke-width:4px
+                            style S1 fill:#dbeafe,stroke:#3b82f6
+                    </div>
+                    <p class="text-xs text-center text-slate-400 mt-4 italic">Diagrama simplificado de conexión física (Hardware &rarr;Cable &rarr;Dispositivo)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logical Map Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                El Mapa Lógico (Topología Lógica)
+            </h3>
+            
+            <div class="prose prose-slate max-w-none text-slate-700 space-y-4">
+                <p>
+                    El mapa lógico ignora los cables y las paredes. Se centra en el "Cómo fluyen los datos". Representa el direccionamiento, las subredes y la jerarquía de comunicación.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                        <h4 class="font-bold text-slate-800">Información Contenida:</h4>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span>•</span> <strong>Direccionamiento IP:</strong> Direcciones estáticas y rangos de DHCP.</li>
+                            <li class="flex items-start gap-2"><span>•</span> <strong>Máscaras de Subred:</strong> Segmentación de la red (ej. /24, /26).</li>
+                            <li class="flex items-start gap-2"><span>•</span> <strong>VLANs:</strong> Identificación de redes virtuales (ej. VLAN 10 - Admin, VLAN 20 - Alumnos).</li>
+                            <li class="flex items-start gap-2"><span>•</span> <strong>Puertas de Enlace:</strong> Dirección del Router que permite la salida a otras redes.</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                        <h4 class="font-bold text-slate-800">Utilidad Técnica:</h4>
+                        <p class="text-sm">Es la herramienta principal para el <strong>Troubleshooting</strong>. Permite diagnosticar problemas de conectividad mediante el análisis de rutas, pings y trazas sin necesidad de estar físicamente frente al equipo.</p>
+                    </div>
+                </div>
+
+                <div class="my-10">
+                    <h4 class="text-center font-semibold text-slate-500 mb-4">Ejemplo de Representación Lógica</h4>
+                    <div class="mermaid">
+                        graph TD
+                            Gateway[Gateway Router <br/> 192.168.1.1] --> SW[Switch L3]
+                            SW --> VLAN10[VLAN 10 - Administración <br/> Red 192.168.10.0/24]
+                            SW --> VLAN20[VLAN 20 - Alumnos <br/> Red 192.168.20.0/24]
+                            
+                            VLAN10 --> PC_Admin[PC Admin <br/> 192.168.10.10]
+                            VLAN20 --> PC_Alu1[PC Alu 1 <br/> 192.168.20.50]
+                            VLAN20 --> PC_Alu2[PC Alu 2 <br/> 192.168.20.51]
+                            
+                            style Gateway fill:#fef3c7,stroke:#d97706
+                            style SW fill:#dbeafe,stroke:#3b82f6
+                            style VLAN10 fill:#dcfce7,stroke:#16a34a
+                            style VLAN20 fill:#ede9fe,stroke:#7c3aed
+                    </div>
+                    <p class="text-xs text-center text-slate-400 mt-4 italic">Diagrama de flujo lógico (Direccionamiento &rarr; Segmentación)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                Comparativa: Mapa Físico vs. Mapa Lógico
+            </h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600 border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-800 font-bold">
+                            <th class="p-4 border border-slate-200">Característica</th>
+                            <th class="p-4 border border-slate-200">Mapa Físico</th>
+                            <th class="p-4 border border-slate-200">Mapa Lógico</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Foco Principal</td>
+                            <td class="p-4 border border-slate-200">Hardware y Ubicación Geográfica</td>
+                            <td class="p-4 border border-slate-200">Flujo de Datos y Configuración</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Elementos</td>
+                            <td class="p-4 border border-slate-200">Cables, Racks, Tomas, Puertos</td>
+                            <td class="p-4 border border-slate-200">IPs, Máscaras, VLANs, Rutas</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Cambio Frecuente</td>
+                            <td class="p-4 border border-slate-200">Bajo (solo si se mueve el hardware)</td>
+                            <td class="p-4 border border-slate-200">Medio/Alto (cambios de IP, nuevas VLANs)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Utilidad Principal</td>
+                            <td class="p-4 border border-slate-200">Instalación y Reparación Física</td>
+                            <td class="p-4 border border-slate-200">Gestión de Tráfico y Troubleshooting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Reference Section -->
+        <section class="bg-slate-100 p-8 rounded-2xl border border-slate-200 space-y-4">
+            <h4 class="text-lg font-bold text-slate-800">📚 Referencias y Lecturas Recomendadas</h4>
+            <ul class="list-disc pl-6 text-sm text-slate-600 space-y-2">
+                <li><a href="https://es.wikipedia.org/wiki/Topolog%C3%ADa_de_red" class="text-blue-600 hover:underline" target="_blank">Wikipedia: Topología de red - Física vs Lógica.</a></li>
+                <li><a href="https://www.tiaonline.org" class="text-blue-600 hover:underline" target="_blank">TIA/EIA: Estándares internacionales de cableado estructurado.</a></li>
+                <li><a href="https://www.cisco.com" class="text-blue-600 hover:underline" target="_blank">Cisco Design Guides: Documentación de infraestructura de red.</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-xs">
+        <p>Sistemas Informáticos - RA1.07 - Mapas de Red | Generado para FP Superior de Informática</p>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+</body>
+</html>

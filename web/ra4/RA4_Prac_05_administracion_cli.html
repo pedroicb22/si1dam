@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA4 Prac 05: Administración CLI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-sky-400">Práctica 05: Reto de Administración CLI</h1>
+            <span class="criterion-badge">Criterio e) Comandos de configuración</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA4</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">El Reto</h2>
+            <p class="text-slate-300 mb-6">Debes realizar las siguientes tareas estrictamente a través de la terminal. Queda prohibido el uso de entornos GUI.</p>
+            <div class="space-y-6">
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 1: Identidad del Equipo</h4>
+                    <p class="text-sm text-slate-400 mb-2">Cambia el nombre del equipo (hostname) a <code>SRV-PROD-01</code>.</p>
+                    <div class="terminal-box p-3 rounded text-emerald-400 text-xs">sudo hostnamectl set-hostname SRV-PROD-01</div>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 2: Análisis de CPU</h4>
+                    <p class="text-sm text-slate-400 mb-2">Caza de procesos: Encuentra todos los procesos que consuman más del 10% de CPU.</p>
+                    <div class="terminal-box p-3 rounded text-emerald-400 text-xs">top -o %CPU</div>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 3: Propiedad de Archivos</h4>
+                    <p class="text-sm text-slate-400 mb-2">Cambia el dueño del archivo <code>/etc/config_test</code> al usuario <code>pedro</code>.</p>
+                    <div class="terminal-box p-3 rounded text-emerald-400 text-xs">sudo chown pedro /etc/config_test</div>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Entrega</h2>
+            <p class="text-slate-300">Captura de pantalla de la terminal ejecutando los tres comandos y mostrando la confirmación del cambio.</p>
+        </section>
+    </main>
+</body>
+</html>

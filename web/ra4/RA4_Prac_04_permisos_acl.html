@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA4 Prac 04: Permisos y ACL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-sky-400">Práctica 04: Carpeta Compartida Segura</h1>
+            <span class="criterion-badge">Criterio d) Protección de información</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA4</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Reto de Matriz de Permisos</h2>
+            <p class="text-slate-300 mb-6">Debes configurar una carpeta compartida <code>/datos_empresa</code> siguiendo estrictamente la siguiente ley de acceso:</p>
+            <div class="overflow-x-auto mb-6">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-slate-800 text-emerald-400">
+                        <tr><th class="p-3">Sujeto</th><th class="p-3">Permiso</th><th class="p-3">Método</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-slate-700"> <td class="p-3">Root</td> <td class="p-3">Control Total</td> <td class="p-3">Básico</td> </tr>
+                        <tr class="border-b border-slate-700"> <td class="p-3">Grupo Contabilidad</td> <td class="p-3">Lectura + Escritura</td> <td class="p-3">Básico (chgrp)</td> </tr>
+                        <tr class="border-b border-slate-700"> <td class="p-3">Usuario Auditor</td> <td class="p-3">SÓLO Lectura</td> <td class="p-3">ACL (setfacl)</td> </tr>
+                        <tr> <td class="p-3">Otros</td> <td class="p-3">Ninguno</td> <td class="p-3">chmod 770</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="space-y-4">
+                <h3 class="font-semibold text-white">Comando Clave (ACL):</h3>
+                <div class="bg-black p-4 rounded-lg text-emerald-400 font-mono text-sm">
+                    sudo setfacl -m u:auditor:r-- /datos_empresa
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Validación</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Intentar crear archivo como usuario 'auditor' $\rightarrow$ ERROR.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Ejecutar <code>getfacl /datos_empresa</code> y verificar la entrada del auditor.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

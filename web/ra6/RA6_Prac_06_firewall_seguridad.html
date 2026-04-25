@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA6 Prac 06: Firewall y Antimalware</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extbold text-sky-400">Práctica 06: Implementación de Firewall y Seguridad</h1>
+            <span class="criterion-badge">Criterio f) Utilidades de seguridad básica</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA6</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Defensa Perimetral y Anti-BruteForce</h2>
+            <p class="text-slate-300 mb-6">Un servidor expuesto a la red es blanco constante de ataques. Implementaremos un firewall restrictivo y una herramienta de bloqueo automático.</p>
+            <div class="space-y-6">
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 1: Firewall Restrictivo</h4>
+                    <p class="text-sm text-slate-400 mb-2">Configurar el firewall para bloquear todo el tráfico entrante, permitiendo únicamente el tráfico la red la cual sea necesaria para la administración (estricto SSH puerto 22).</p>
+                    <div class="terminal-box p-3 rounded text-emerald-400 text-xs">
+                        sudo ufw default deny incoming<br>
+                        sudo ufw allow 22/tcp
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 2: Fail2Ban</h4>
+                    <p class="text-sm text-slate-400 mb-2">Instalar <strong class="text-white">Fail2Ban</strong>. Configurar la regla para que cualquier IP que falle 3 intentos de login por SSH sea baneada automáticamente durante 1 hora.</p>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Prueba de Intrusión</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Intentar acceder por un puerto no permitido $\rightarrow$ El paquete debe ser descartado.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Realizar 4 intentos de login fallidos $\rightarrow$ Comprobar que la IP queda bloqueada en <code class="text-sky-300">fail2ban-client status sshd</code>.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

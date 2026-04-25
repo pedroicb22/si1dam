@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA1.06 - Componentes de una Red | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-font { font-family: 'Fira Code', monospace; }
+        .mermaid { background: white; border-radius: 0.5rem; padding: 1rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">RA1</span>
+                <h1 class="text-lg font-bold text-slate-800">Componentes de una Red</h1>
+            </div>
+            <div class="text-sm text-slate-500 italic">Módulo: Sistemas Informáticos</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+        <!-- Introduction Section -->
+        <section class="space-y-6">
+            <div class="border-l-4 border-orange-500 pl-4">
+                <h2 class="text-3xl font-extrabold text-slate-800">1.6 Componentes de una Red Informática</h2>
+                <p class="text-slate-600 mt-2 text-lg">Estudio del hardware activo y pasivo necesario para la interconexión de sistemas.</p>
+            </div>
+            <p class="text-slate-700">
+                Para que una red funcione, se requiere la combinación de <strong>componentes activos</strong> (dispositivos que procesan y regeneran la señal eléctrica o óptica) y <strong>componentes pasivos</strong> (elementos que sirven de soporte físico para la transmisión de datos sin procesarlos).
+            </p>
+        </section>
+
+        <!-- Network Interface Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                La Tarjeta de Red (NIC - Network Interface Card)
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4 text-slate-700">
+                    <p>La NIC es el componente físico que conecta el dispositivo al medio de transmisión. Cada tarjeta posee un identificador único y universal grabado de fábrica.</p>
+                    
+                    <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                        <strong class="block text-blue-800 mb-1">La Dirección MAC (Media Access Control)</strong>
+                        <p class="text-sm italic">Es la "matrícula" del hardware. Se compone de 48 bits representados en hexadecimal (ej. <code>00:1A:2B:3C:4D:5E</code>). La primera mitad identifica al fabricante (OUI) y la segunda es el número de serie único del dispositivo.</p>
+                    </div>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-start gap-2"><span>•</span> <strong>NIC Ethernet:</strong> Conexión por cable (RJ-45).</li>
+                        <li class="flex items-start gap-2"><span>•</span> <strong>NIC Inalámbrica:</strong> Conexión por ondas de radio (Wi-Fi).</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Ethernet_card.jpg/320px-Ethernet_card.jpg" 
+                         alt="Tarjeta de Red Ethernet" 
+                         class="mx-auto h-auto max-w-full rounded shadow-sm">
+                    <p class="text-xs text-slate-400 mt-4 italic">Fuente: Wikimedia Commons - Ejemplo de NIC PCIe</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interconnection Devices Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                Dispositivos de Interconexión (Hardware Activo)
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Hub -->
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-red-400 rounded-full"></span> Concentrador (Hub)
+                    </h4>
+                    <p class="text-sm text-slate-600">Dispositivo "no inteligente". Recibe un paquete por un puerto y lo reenvía a <strong>todos</strong> los demás puertos (Broadcast). Genera muchas colisiones y congestión.</p>
+                    <span class="text-xs font-bold px-2 py-1 bg-red-100 text-red-700 rounded">Capa 1 (Física)</span>
+                </div>
+                <!-- Switch -->
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-blue-400 rounded-full"></span> Conmutador (Switch)
+                    </h4>
+                    <p class="text-sm text-slate-600">Dispositivo inteligente que aprende las direcciones MAC de los dispositivos conectados. Envía los datos <strong>únicamente al destino correcto</strong>.</p>
+                    <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded">Capa 2 (Enlace)</span>
+                </div>
+                <!-- Router -->
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-green-400 rounded-full"></span> Enrutador (Router)
+                    </h4>
+                    <p class="text-sm text-slate-600">Interconecta redes diferentes (ej. LAN con WAN). Toma decisiones de ruta basadas en direcciones IP para enviar el tráfico hacia el destino más eficiente.</p>
+                    <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-700 rounded">Capa 3 (Red)</span>
+                </div>
+                <!-- AP -->
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-purple-400 rounded-full"></span> Punto de Acceso (Access Point)
+                    </h4>
+                    <p class="text-sm text-slate-600">Actúa como un puente entre una red cableada (Ethernet) y una red inalámbrica (Wi-Fi), permitiendo la conexión de dispositivos móviles.</p>
+                    <span class="text-xs font-bold px-2 py-1 bg-purple-100 text-purple-700 rounded">L2 / L3</span>
+                </div>
+            </div>
+
+            <div class="my-10">
+                <h4 class="text-center font-semibold text-slate-500 mb-4">Comparativa de Flujo de Datos</h4>
+                <div class="mermaid">
+                    graph TD
+                        subgraph Hub_Logic [Hub - Broadcast]
+                            H[Hub] --> P1[PC A]
+                            H --> P2[PC B]
+                            H --> P3[PC C]
+                        end
+                        subgraph Switch_Logic [Switch - Unicast]
+                            S[Switch] -- "Solo al destino" --> P4[PC D]
+                            S -- "Solo al destino" --> P5[PC E]
+                        end
+                        
+                        style H fill:#fee2e2,stroke:#ef4444
+                        style S fill:#dbeafe,stroke:#3b82f6
+                </div>
+            </div>
+        </section>
+
+        <!-- Media and Cabling Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                Medios de Transmisión y Cableado (Hardware Pasivo)
+            </h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600 border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-800 font-bold">
+                            <th class="p-4 border border-slate-200">Medio</th>
+                            <th class="p-4 border border-slate-200">Tipo / Categoría</th>
+                            <th class="p-4 border border-slate-200">Características</th>
+                            <th class="p-4 border border-slate-200">Conector</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Cobre (UTP/STP)</td>
+                            <td class="p-4 border border-slate-200">Cat 5e, 6, 6a, 7</td>
+                            <td class="p-4 border border-slate-200">Barato, flexible, limitado en distancia (100m).</td>
+                            <td class="p-4 border border-slate-200">RJ-45</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Fibra Óptica</td>
+                            <td class="p-4 border border-slate-200">Monomodo / Multimodo</td>
+                            <td class="p-4 border border-slate-200">Inmune a interferencias eléctricas, larguísimas distancias.</td>
+                            <td class="p-4 border border-slate-200">LC, SC, ST</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">Inalámbrico</td>
+                            <td class="p-4 border border-slate-200">Ondas de Radio (RF)</td>
+                            <td class="p-4 border border-slate-200">Movilidad total, propenso a interferencias.</td>
+                            <td class="p-4 border border-slate-200">Antenas / Chips</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Topologies Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                Topologías de Red
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-slate-800 text-lg">Topologías Físicas</h4>
+                    <p class="text-sm text-slate-600">Definen la disposición real de los cables y dispositivos.</p>
+                    <ul class="text-sm space-y-3 text-slate-700">
+                        <li class="flex items-start gap-2"><strong>Estrella:</strong> Todos los nodos se conectan a un punto central (Switch). Es la más común.</li>
+                        <li class="flex items-start gap-2"><strong>Bus:</strong> Todos comparten un único cable central. Muy ineficiente y obsoleta.</li>
+                        <li class="flex items-start gap-2"><strong>Anillo:</strong> Los nodos se conectan en círculo. El dato viaja en una sola dirección.</li>
+                        <li class="flex items-start gap-2"><strong>Malla:</strong> Todos están conectados con todos. Máxima redundancia (usada en WANs).</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-center font-bold text-slate-500 mb-4">Ejemplo: Topología en Estrella</h4>
+                    <div class="mermaid">
+                        graph TD
+                            S[Switch Central] --> PC1[PC 1]
+                            S --> PC2[PC 2]
+                            S --> PC3[PC 3]
+                            S --> PC4[PC 4]
+                            S --> Server[Servidor]
+                            
+                            style S fill:#dbeafe,stroke:#3b82f6,stroke-width:4px
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reference Section -->
+        <section class="bg-slate-100 p-8 rounded-2xl border border-slate-200 space-y-4">
+            <h4 class="text-lg font-bold text-slate-800">📚 Referencias y Lecturas Recomendadas</h4>
+            <ul class="list-disc pl-6 text-sm text-slate-600 space-y-2">
+                <li><a href="https://es.wikipedia.org/wiki/Tarjeta_de_red" class="text-blue-600 hover:underline" target="_blank">Wikipedia: Tarjeta de red y Direcciones MAC.</a></li>
+                <li><a href="https://www.cisco.com" class="text-blue-600 hover:underline" target="_blank">Cisco: Diferencias entre Switch y Router.</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Network_topology" class="text-blue-600 hover:underline" target="_blank">Wikipedia: Network Topology - Physical and Logical.</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-xs">
+        <p>Sistemas Informáticos - RA1.06 - Componentes de una Red | Generado para FP Superior de Informática</p>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+</body>
+</html>

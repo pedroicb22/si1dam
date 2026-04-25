@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA1.01 - La Placa Base | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-font { font-family: 'Fira Code', monospace; }
+        .mermaid { background: white; border-radius: 0.5rem; padding: 1rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">RA1</span>
+                <h1 class="text-lg font-bold text-slate-800">La Placa Base</h1>
+            </div>
+            <div class="text-sm text-slate-500 italic">Módulo: Sistemas Informáticos</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+        <!-- Introduction Section -->
+        <section class="space-y-6">
+            <div class="border-l-4 border-orange-500 pl-4">
+                <h2 class="text-3xl font-extrabold text-slate-800">1.1 La Placa Base (Motherboard)</h2>
+                <p class="text-slate-600 mt-2 text-lg">El núcleo físico que interconecta todos los componentes de un sistema informático.</p>
+            </div>
+            <p class="text-slate-700">
+                La placa base es una tarjeta de circuito impreso (PCB) compleja que proporciona la infraestructura eléctrica y lógica necesaria para que el procesador, la memoria, el almacenamiento y los periféricos se comuniquen entre sí. Su diseño determina la capacidad de expansión, la estabilidad del sistema y el rendimiento máximo alcanzable.
+            </p>
+        </section>
+
+        <!-- Formats Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                Formatos y Estándares de Tamaño
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4 text-slate-700">
+                    <p>Los formatos definen las dimensiones físicas de la placa y la disposición de los agujeros de montaje. El estándar más extendido es el <strong>ATX (Advanced Technology eXtended)</strong>, desarrollado por Intel.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+                            <strong class="text-orange-600 block mb-1">ATX (Standard)</strong>
+                            <p class="text-sm">Dimensiones aprox. 305 × 244 mm. Es el estándar para PCs de escritorio, ofreciendo la mayor capacidad de expansión (más slots PCIe y RAM).</p>
+                        </div>
+                        <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+                            <strong class="text-orange-600 block mb-1">Micro-ATX (mATX)</strong>
+                            <p class="text-sm">Dimensiones aprox. 244 × 244 mm. Un equilibrio entre tamaño y capacidad. Común en equipos de oficina y PCs compactos.</p>
+                        </div>
+                        <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+                            <strong class="text-orange-600 block mb-1">Mini-ITX</strong>
+                            <p class="text-sm">Dimensiones aprox. 170 × 170 mm. Diseñado para sistemas ultra-compactos (SFF). Limitado generalmente a un solo slot PCIe y dos slots de memoria.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Comparison_of_motherboard_form_factors.svg/600px-Comparison_of_motherboard_form_factors.svg.png" 
+                         alt="Comparativa de Formatos de Placa Base" 
+                         class="mx-auto h-auto max-w-full rounded shadow-sm">
+                    <p class="text-xs text-slate-400 mt-4 italic">Fuente: Wikimedia Commons - Comparativa visual de formatos ATX, mATX y Mini-ITX</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chipset Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                El Chipset: El Cerebro de la Comunicación
+            </h3>
+            
+            <div class="prose prose-slate max-w-none text-slate-700 space-y-4">
+                <p>
+                    El chipset es un conjunto de circuitos integrados que gestionan el flujo de datos entre la CPU, la memoria y los periféricos. Históricamente, se dividía en dos puentes principales:
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                        <h4 class="font-bold text-blue-800 mb-2">Northbridge (Puente Norte)</h4>
+                        <p class="text-sm">Gestionaba los componentes de alta velocidad: <strong>Memoria RAM, AGP/PCIe (GPU)</strong>. Se comunicaba directamente con la CPU. En procesadores modernos, sus funciones han sido integradas dentro del propio procesador (SoC - System on a Chip) para reducir la latencia.</p>
+                    </div>
+                    <div class="p-6 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
+                        <h4 class="font-bold text-green-800 mb-2">Southbridge (Puente Sur)</strong>
+                        <p class="text-sm">Gestiona los componentes de menor velocidad: <strong>SATA, USB, BIOS, Audio, Red</strong>. Se comunica con el Northbridge (o la CPU) para transmitir datos al procesador.</p>
+                    </div>
+                </div>
+
+                <div class="my-10">
+                    <h4 class="text-center font-semibold text-slate-500 mb-4">Diagrama de Flujo de Datos Tradicional</h4>
+                    <div class="mermaid">
+                        graph TD
+                            CPU[CPU / Procesador] <--> NB[Northbridge]
+                            NB <--> RAM[Memoria RAM]
+                            NB <--> GPU[GPU / PCIe x16]
+                            NB <--> SB[Southbridge]
+                            SB <--> SATA[Discos SATA/SSD]
+                            SB <--> USB[Puertos USB]
+                            SB <--> BIOS[Chip BIOS/UEFI]
+                            SB <--> LAN[Tarjeta de Red/Audio]
+                            
+                            style CPU fill:#f9f,stroke:#333,stroke-width:2px
+                            style NB fill:#bbf,stroke:#333,stroke-width:2px
+                            style SB fill:#bfb,stroke:#333,stroke-width:2px
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buses Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                Buses de Interconexión y Puertos
+            </h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600 border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-800 font-bold">
+                            <th class="p-4 border border-slate-200">Bus / Interfaz</th>
+                            <th class="p-4 border border-slate-200">Uso Principal</th>
+                            <th class="p-4 border border-slate-200">Características Técnicas</th>
+                            <th class="p-4 border border-slate-200">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">PCI Express (PCIe)</td>
+                            <td class="p-4 border border-slate-200">GPU, SSD NVMe, Tarjetas de Red</td>
+                            <td class="p-4 border border-slate-200">Serial, alta velocidad, carriles (x1, x4, x8, x16)</td>
+                            <td class="p-4 border border-slate-200">PCIe 5.0 duplica la velocidad de la 4.0</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">SATA III</td>
+                            <td class="p-4 border border-slate-200">HDD, SSD 2.5"</td>
+                            <td class="p-4 border border-slate-200">Hasta 6 Gb/s</td>
+                            <td class="p-4 border border-slate-200">En desuso frente a NVMe</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">M.2 (NVMe)</td>
+                            <td class="p-4 border border-slate-200">SSD de alto rendimiento</td>
+                            <td class="p-4 border border-slate-200">Usa carriles PCIe directamente</td>
+                            <td class="p-4 border border-slate-200">Formato físico compacto y veloz</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-semibold text-slate-800">USB 3.2 / 4</td>
+                            <td class="p-4 border border-slate-200">Periféricos externos</td>
+                            <td class="p-4 border border-slate-200">Hasta 40 Gb/s (USB4)</td>
+                            <td class="p-4 border border-slate-200">Estándar universal de conexión</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Reference Section -->
+        <section class="bg-slate-100 p-8 rounded-2xl border border-slate-200 space-y-4">
+            <h4 class="text-lg font-bold text-slate-800">📚 Referencias y Lecturas Recomendadas</h4>
+            <ul class="list-disc pl-6 text-sm text-slate-600 space-y-2">
+                <li><a href="https://es.wikipedia.org/wiki/Placa_base" class="text-blue-600 hover:underline" target="_blank">Wikipedia: Placa base - Conceptos generales y evolución.</a></li>
+                <li><a href="https://www.intel.com" class="text-blue-600 hover:underline" target="_blank">Intel Ark: Especificaciones técnicas de chipsets y procesadores.</a></li>
+                <li><a href="https://www.amd.com" class="text-blue-600 hover:underline" target="_blank">AMD Processors: Documentación sobre arquitectura de sockets y chipsets.</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-xs">
+        <p>Sistemas Informáticos - RA1.01 - Placas Base | Generado para FP Superior de Informática</p>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA2 - Contenido 02: Licencias y Clasificación de SO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+    <nav class="bg-slate-900 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tight">Sistemas Informáticos <span class="text-blue-400">| RA2</span></span>
+            <div class="space-x-4 text-sm">
+                <a href="RA2_Cont_01_arquitectura_so.html" class="hover:text-blue-400 transition">&larr; Bloque 01</a>
+                <a href="RA2_Cont_03_planificacion_instalacion.html" class="hover:text-blue-400 transition">Siguiente: Planificación &rarr;</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white border-b border-slate-200 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center space-x-4 mb-4">
+                <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Teoría Técnica</span>
+                <span class="text-slate-500 text-sm">Bloque 02</span>
+            </div>
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Clasificación y Marco Legal de los SO</h1>
+            <p class="text-lg text-slate-600 max-w-3xl">
+                Análisis de la diversidad de sistemas operativos actuales y el estudio de los contratos legales (licencias) que regulan su uso, distribución y modificación.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10 space-y-12">
+        
+        <!-- Clasificación de Sistemas Operativos -->
+        <section class="bg-white p-8 rounded-xl shadow-md border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                Clasificación de los Sistemas Operativos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-700">Sistemas Propietarios</h3>
+                    <p class="text-slate-600">
+                        Sistemas cuyo código fuente es secreto y el usuario adquiere un derecho de <strong class="text-slate-900">uso</strong>, no la propiedad del programa.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span> <strong>Windows:</strong> Dominio en escritorio y empresarial. Arquitectura NT.</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span> <strong>macOS:</strong> Basado en Unix (BSD), optimizado para hardware Apple.</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-700">Sistemas Libres / Open Source</h3>
+                    <p class="text-slate-600">
+                        Sistemas donde el código fuente es público, permitiendo su estudio, modificación y redistribución.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span> <strong>GNU/Linux:</strong> Múltiples distribuciones (Ubuntu, Debian, Fedora).</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span> <strong>BSD:</strong> Alta estabilidad, muy común en servidores y firewalls.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tipos de Licencias -->
+        <section class="bg-white p-8 rounded-xl shadow-md border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Marco Legal: Tipos de Licencias
+            </h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead class="bg-slate-100 text-slate-600 uppercase text-xs">
+                        <tr>
+                            <th class="p-4 border border-slate-200">Tipo de Licencia</th>
+                            <th class="p-4 border border-slate-200">Características Principales</th>
+                            <th class="p-4 border border-slate-200">Ejemplo Típico</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">EULA (Proprietaria)</td>
+                            <td class="p-4 border border-slate-200">Contrato de "Licencia de Usuario Final". Prohíbe la ingeniería inversa y la redistribución.</td>
+                            <td class="p-4 border border-slate-200 bg-slate-50">Microsoft Office / Windows</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">GPL (General Public License)</td>
+                            <td class="p-4 border border-slate-200">Garantiza las 4 libertades. Si se modifica y redistribuye, la nueva versión debe ser también libre.</td>
+                            <td class="p-4 border border-slate-200 bg-green-50">Kernel de Linux</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">MIT / Apache (Permisivas)</td>
+                            <td class="p-4 border border-slate-200">Permiten el uso del código en proyectos propietarios sin obligar a liberar el código derivado.</td>
+                            <td class="p-4 border border-slate-200 bg-green-50">Diversas librerías de JS / Python</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">Suscripción (SaaS)</td>
+                            <td class="p-4 border border-slate-200">Pago recurrente por el derecho de uso. El software suele estar en la nube o requiere validación online.</td>
+                            <td class="p-4 border border-slate-200 bg-slate-50">Adobe Creative Cloud</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Copyleft vs Permisivo -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-indigo-900 text-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Concepto de Copyleft</h3>
+                <p class="text-sm text-indigo-200 leading-relaxed">
+                    Es una estrategia legal que utiliza las leyes de copyright para asegurar que el software siga siendo libre. La regla fundamental es: <strong class="text-white">"Puedes hacer lo que quieras con este programa, siempre y cuando compartas tus mejoras bajo la misma licencia"</strong>. 
+                    <br><br>
+                    <span class="italic">Evita que el software libre sea "cerrado" por una empresa que cree una versión mejorada y la venda como propietaria.</span>
+                </p>
+            </div>
+            <div class="bg-slate-800 text-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Licencias Permisivas</h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    A diferencia del copyleft, las licencias permisivas (como MIT) solo piden que se reconozca la autoría original. No obligan a que las obras derivadas sean libres. 
+                    <br><br>
+                    <span class="italic">Son muy atractivas para las empresas porque pueden integrar código libre en productos comerciales cerrados sin riesgos legales.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Caso de Estudio Rápido -->
+        <section class="bg-amber-50 p-8 rounded-xl shadow-md border border-amber-200">
+            <h3 class="text-lg font-bold text-amber-900 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3H13.5V13.5h-2.5V11.5h-2.5V9h-2.5V6h-2.5V4h-2.5V4H6.938c-1.54 0-2.502 1.667-1.732 3H13.5V13.5h-2.5V11.5h-2.5V9h-2.5V6h-2.5V4h-2.5V4H6.938z"></path></svg>
+                Análisis Comparativo: Coste vs. Flexibilidad
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-sm">
+                <div class="p-4 bg-white rounded border border-amber-200">
+                    <strong class="block text-amber-800 mb-1">Modelo Propietario</strong>
+                    <p class="text-slate-600">Soporte técnico oficial, mayor compatibilidad con software comercial, pero coste de licencia elevado y dependencia del proveedor (Vendor Lock-in).</p>
+                </div>
+                <div class="p-4 bg-white rounded border border-amber-200">
+                    <strong class="block text-amber-800 mb-1">Modelo Libre</strong>
+                    <p class="text-slate-600">Coste 0, total control sobre la seguridad y personalización, pero requiere mayor curva de aprendizaje y soporte basado en la comunidad.</p>
+                </div>
+                <div class="p-4 bg-white rounded border border-amber-200">
+                    <strong class="block text-amber-800 mb-1">Modelo Híbrido</strong>
+                    <p class="text-slate-600">Empresas que venden soporte y servicios sobre software libre (Ej: Red Hat). Combinan la libertad del código con la seguridad de un contrato profesional.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm mb-4">&copy; 2026 - Módulo de Sistemas Informáticos - FP Superior</p>
+            <div class="flex justify-center space-x-6 text-xs uppercase tracking-widest font-bold">
+                <a href="RA2_Cont_01_arquitectura_so.html" class="hover:text-white transition">&larr; Bloque 01</a>
+                <a href="RA2_Cont_03_planificacion_instalacion.html" class="text-blue-400 hover:text-white transition">Siguiente: Planificación &rarr;</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

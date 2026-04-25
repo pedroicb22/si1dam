@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA6 Prac 04: Gestión Remota y Túneles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extbold text-sky-400">Práctica 04: Gestión Remota y Tunelización</h1>
+            <span class="criterion-badge">Criterio d) Técnicas de Conexión Remota</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA6</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Acceso Seguro: SSH y Local Port Forwarding</h2>
+            <p class="text-slate-300 mb-6">En entornos de producción, muchas interfaces de gestión (están en el puerto 80 o 443) solo escuchan en <code class="text-sky-300">localhost</code> por seguridad. Aprenderemos a "tunelizar" ese tráfico.</p>
+            <div class="space-y-6">
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 1: Acceso Básico</h4>
+                    <p class="text-sm text-slate-400 mb-2">Configurar el servidor SSH y conectar desde el cliente utilizando la terminal.</p>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Tarea 2: El Túnel SSH</h4>
+                    <p class="text-sm text-slate-400 mb-2">Crear un túnel que mapee el puerto 80 la red local del cliente al puerto 80 del servidor remoto.</p>
+                    <div class="terminal-box p-3 rounded text-emerald-400 text-xs">
+                        ssh -L 8080:localhost:80 usuario@ip_servidor
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2 italic">Explicación: El tráfico que llega al puerto 8080 del cliente se redirige cifrado al puerto 80 del servidor.</p>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Validación</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Sesión SSH establecida correctamente.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Al escribir <code class="text-sky-300">http://localhost:8080</code> en el navegador del cliente, se visualiza la web interna del servidor.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

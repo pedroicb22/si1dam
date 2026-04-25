@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA3 Prac_03 - Ingeniería de Almacenamiento con LVM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .accent-text { color: #38bdf8; }
+        .mermaid { background: transparent !important; }
+        .img-container { background: #1e293b; border: 1px solid #334155; border-radius: 1rem; overflow: hidden; }
+        .cmd-box { background: #000; color: #00ff00; font-family: 'Fira Code', monospace; padding: 1rem; border-radius: 0.5rem; border: 1px solid #334155; position: relative; }
+        .cmd-box::before { content: 'Terminal'; position: absolute; top: 0; right: 0; background: #334155; color: #fff; font-size: 0.6rem; padding: 2px 6px; border-bottom-left-radius: 4px; }
+        .step-card { border-left: 4px solid #0ea5e9; transition: transform 0.2s; }
+        .step-card:hover { transform: translateX(5px); }
+        .criterion-badge { background: #0369a1; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-700 pb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="px-3 py-1 bg-emerald-500 text-slate-900 text-xs font-bold rounded-full uppercase">RA3: Prácticas</span>
+                <span class="text-slate-400 text-sm">Módulo: Sistemas Informáticos</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Práctica 3: Ingeniería de Almacenamiento con LVM</h1>
+            <p class="text-xl text-slate-400">Implementación de la abstracción de almacenamiento: Creación de volúmenes lógicos, grupos de volumen y redimensionado de particiones en caliente (Online Resize).</p>
+        </header>
+
+        <!-- conceptual intro -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="criterion-badge">CRITERIO E</span>
+                <h2 class="text-2xl font-bold text-white">El Salto de Particionado Tradicional a LVM</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-sky-500">
+                    <h3 class="text-xl font-semibold accent-text mb-4">¿Por qué LVM?</h3>
+                    <p class="text-slate-300 leading-relaxed mb-4">
+                        En el particionado estándar, una partición es un bloque rígido de sectores en el disco. Si te quedas sin espacio, mover datos es una pesadilla. <strong class="text-white">LVM (Logical Volume Management)</strong> introduce una capa intermedia que separa el almacenamiento físico de la estructura lógica.
+                    </p>
+                    <div class="bg-sky-900/20 p-4 rounded-lg border border-sky-500/30 text-sm text-sky-200 italic">
+                        "LVM convierte tus discos en un gran pool de almacenamiento del que puedes extraer 'porciones' virtuales y redimensionarlas sin reiniciar la máquina."
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/LVM_structure.svg/1200px-LVM_structure.svg.png" alt="Arquitectura LVM" class="w-full h-auto opacity-90">
+                    <p class="p-3 text-xs text-center text-slate-500 italic">Flujo de datos: Disco Físico $\rightarrow$ Volumen Físico $\rightarrow$ Grupo $\rightarrow$ Volumen Lógico</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE WORKFLOW -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-white mb-8 text-center">Guía de Implementación Paso a Paso</h3>
+            
+            <div class="space-y-8">
+                <!-- Step 1 -->
+                <div class="glass-card p-8 rounded-2xl step-card">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 bg-sky-500 text-slate-900 rounded-full flex items-center justify-center font-bold text-lg">1</div>
+                        <h4 class="text-xl font-bold text-white">Preparación de Volúmenes Físicos (PV)</h4>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <p class="text-slate-300 mb-4">Primero, debemos decirle al sistema que ciertas particiones o discos enteros deben ser tratados como "materia prima" para LVM. Esto se hace inicializando el dispositivo como un <strong>Physical Volume (PV)</strong>.</p>
+                            <div class="cmd-box mb-4">
+                                pvcreate /dev/sdb1 /dev/sdc1 /dev/sdd1
+                            </div>
+                            <p class="text-slate-400 text-sm italic">Explicación: Convertimos tres particiones físicas en volúmenes lógicos preparados para ser agrupados.</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <strong class="text-sky-400 block mb-2 text-sm">Verificación:</strong>
+                            <div class="cmd-box text-xs">pvdisplay</div>
+                            <p class="text-slate-500 text-xs mt-2">Muestra la capacidad total y el estado de cada PV.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-8 rounded-2xl step-card">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 bg-sky-500 text-slate-900 rounded-full flex items-center justify-center font-bold text-lg">2</div>
+                        <h4 class="text-xl font-bold text-white">Creación del Grupo de Volúmenes (VG)</h4>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <p class="text-slate-300 mb-4">Ahora agrupamos todos nuestros PVs en un solo gran contenedor llamado <strong>Volume Group (VG)</strong>. A partir de aquí, ya no nos importa qué disco físico es cuál; solo nos importa el tamaño total del pool.</p>
+                            <div class="cmd-box mb-4">
+                                vgcreate vg_datos /dev/sdb1 /dev/sdc1 /dev/sdd1
+                            </div>
+                            <p class="text-slate-400 text-sm italic">Explicación: Creamos el grupo "vg_datos" sumando la capacidad de los tres discos.</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <strong class="text-sky-400 block mb-2 text-sm">Verificación:</strong>
+                            <div class="cmd-box text-xs">vgdisplay</div>
+                            <p class="text-slate-500 text-xs mt-2">Muestra el tamaño total del pool disponible.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-8 rounded-2xl step-card">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 bg-sky-500 text-slate-900 rounded-full flex items-center justify-center font-bold text-lg">3</div>
+                        <h4 class="text-xl font-bold text-white">Despliegue de Volúmenes Lógicos (LV)</h4>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-2">
+                            <p class="text-slate-300 mb-4">Finalmente, extraemos una "porción" del pool para crear un <strong>Logical Volume (LV)</strong>. Este LV es el que el usuario formateará como si fuera un disco normal.</p>
+                            <div class="cmd-box mb-4">
+                                lvcreate -L 50G -n lv_backup vg_datos
+                            </div>
+                            <p class="text-slate-400 text-sm italic">Explicación: Creamos un volumen de 50GB llamado "lv_backup" dentro de nuestro grupo.</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <strong class="text-sky-400 block mb-2 text-sm">Verificación:</strong>
+                            <div class="cmd-box text-xs">lvdisplay</div>
+                            <p class="text-slate-500 text-xs mt-2">Confirma el tamaño y ruta del LV (/dev/vg_datos/lv_backup).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: The Magic -->
+                <div class="glass-card p-8 rounded-2xl step-card border-l-4 border-emerald-500 shadow-lg shadow-emerald-500/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 bg-emerald-500 text-slate-900 rounded-full flex items-center justify-center font-bold text-lg">🚀</div>
+                        <h4 class="text-xl font-bold text-white">Online Resize: Expandiendo el Volumen en Caliente</h4>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-slate-300 mb-4">Imagina que el volumen de backup de 50GB se ha llenado. En lugar de formatear, simplemente le añadimos más espacio del pool del VG y actualizamos el sistema de archivos <strong class="text-white">sin desmontar el disco</strong>.</p>
+                            <div class="cmd-box mb-4">
+                                lvextend -L +20G /dev/vg_datos/lv_backup
+                            </div>
+                            <p class="text-slate-400 text-sm italic mb-4">Añadimos 20GB más al volumen lógico.</p>
+                            <div class="cmd-box">
+                                resize2fs /dev/vg_datos/lv_backup
+                            </div>
+                            <p class="text-slate-400 text-sm italic">Sincronizamos el sistema de archivos (ext4) para que reconozca la nueva capacidad.</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                            <div class="mermaid">
+                                graph TD
+                                    S1[LV 50GB] --> S2{Espacio Lleno}
+                                    S2 --> S3[lvextend +20GB]
+                                    S3 --> S4[resize2fs]
+                                    S4 --> S5[LV 70GB Operativo]
+                                    style S3 fill:#065f46,color:#fff
+                                    style S4 fill:#065f46,color:#fff
+                                    style S5 fill:#059669,color:#fff
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Verification Section -->
+        <section class="mb-16">
+            <div class="glass-card p-8 rounded-2xl border-t-4 border-emerald-500">
+                <h3 class="text-2xl font-bold text-white mb-6 italic text-center">Cierre de la Práctica y Entrega</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                        <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            Entregable Técnico
+                        </h4>
+                        <ul class="text-slate-400 text-sm space-y-3 list-disc pl-5">
+                            <li>Captura de pantalla de <code class="text-white">pvs</code>, <code class="text-white">vgs</code> y <code class="text-white">lvs</code> antes del redimensionado.</li>
+                            <li>Captura de pantalla del comando <code class="text-white">df -h</code> mostrando el volumen con 50GB.</li>
+                            <li>Captura final de la extensión del volumen y comprobación con <code class="text-white">df -h</code> mostrando los 70GB.</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                        <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Criterio de Evaluación
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Se considerará aprobada la actividad si el alumno es capaz de crear la cadena completa de almacenamiento (PV $\rightarrow$ VG $\rightarrow$ LV) y demostrar la expansión del volumen <strong class="text-white">sin pérdida de datos</strong> y sin reiniciar la VM.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Technical Insight -->
+        <footer class="glass-card p-6 rounded-2xl border-l-4 border-sky-500 bg-sky-900/10">
+            <div class="flex items-center gap-3 mb-3">
+                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h-1v-4h-1m4 4h-1v-4h-1m4 4h-1v-4h-1m-5 4v1h-1v-1m-5 0v1h-1v-1m5 0v1h-1v-1"></path></svg>
+                <h4 class="text-lg font-bold text-white">Insight de Arquitectura</h4>
+            </div>
+            <p class="text-slate-400 text-sm italic">
+                "LVM es la base de tecnologías más avanzadas como los <strong class="text-white">Sistemas de Archivos Distribuidos</strong> y el almacenamiento en la nube. Comprender la abstracción de volúmenes es la diferencia entre un instalador de SO y un Arquitecto de Almacenamiento."
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
