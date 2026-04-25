@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA4: Gestión de Procesos y Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400 mb-4">Gestión de Procesos y Servicios</h1>
+        <p class="text-slate-400 text-lg">Módulo: Sistemas Informáticos &bull; RA4: Gestión de Sistemas Operativos</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-12">
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center"><span class="mr-3 text-3xl">⚙️</span> Ciclo de Vida del Proceso</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <p class="text-slate-300">Un proceso es un programa en ejecución. A diferencia de un programa (estático), el proceso es una entidad dinámica que requiere recursos (RAM, CPU).</p>
+                    <div class="mermaid">
+                    stateDiagram-v2
+                        [*] --> Nuevo
+                        Nuevo --> Ejecutando: Asignación CPU
+                        Ejecutando --> Espera: I/O o Evento
+                        Espera --> Ejecutando: Evento Completado
+                        Ejecutando --> Listo: Interrupción/Quantum
+                        Listo --> Ejecutando: Planificador
+                        Ejecutando --> Terminado: Salida/Error
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Estados Críticos</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><strong class="text-white">Zombie:</strong> Proceso que ha terminado pero cuyo padre no ha leído el código de salida.</li>
+                        <li><strong class="text-white">Dormido (Interruptible):</strong> Esperando un evento externo.</li>
+                        <li><strong class="text-white">Planificación (Nice):</strong> Valor que indica la prioridad. En Linux, un valor de +19 es la prioridad más baja.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center"><span class="mr-3 text-3xl">🌐</span> Servicios y Daemons</h2>
+            <p class="text-slate-300 mb-6">Los servicios son procesos que se ejecutan en segundo plano (background) y suelen iniciar con el sistema para proporcionar funcionalidades básicas.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h4 class="font-bold text-emerald-400 mb-3">Systemd (Linux)</h4>
+                    <div class="terminal-box p-4 rounded-lg text-emerald-400 text-xs">
+                        <code class="block">sudo systemctl start apache2 # Inicia el servicio</code>
+                        <code class="block">sudo systemctl enable apache2 # Auto-arranque</code>
+                        <code class="block">systemctl status ssh # Verifica estado</code>
+                    </div>
+                </div>
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h4 class="font-bold text-emerald-400 mb-3">Services.msc (Windows)</h4>
+                    <p class="text-sm text-slate-400">Gestión mediante consola MMC o comandos <code>sc config</code> y <code>net start/stop</code>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

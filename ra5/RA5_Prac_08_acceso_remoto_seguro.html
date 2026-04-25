@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA5 Prac 08: Acceso Remoto Seguro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extbold text-sky-400">Práctica 08: Acceso Remoto Seguro</h1>
+            <span class="criterion-badge">Criterio h) Protocolos Seguros</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA5</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Migración de Telnet a SSH</h2>
+            <p class="text-slate-300 mb-6">El uso de protocolos en texto plano es un riesgo crítico de seguridad. Implementaremos la autenticación basada en llaves para eliminar la dependencia de contraseñas.</p>
+            <div class="space-y-4">
+                <h3 class="font-semibold text-white">Tareas a realizar:</h3>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li>Desinstalar o deshabilitar el servicio <code class="bg-slate-800 px-1 rounded text-sky-300">telnet-server</code>.</li>
+                    <li>Instalar y configurar el demonio <code class="bg-slate-800 px-1 rounded text-sky-300">openssh-server</code>.</li>
+                    <li>Generar un par de llaves RSA/Ed25519 en el cliente: <code class="text-emerald-400 font-mono">ssh-keygen -t ed25519</code>.</li>
+                    <li>Cargar la llave pública en el servidor y editar <code class="text-emerald-400 font-mono">sshd_config</code> para cambiar <strong class="text-white">PasswordAuthentication no</strong>.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Verificación de Seguridad</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Intento de acceso por password $\rightarrow$ RECHAZADO.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Acceso exitoso mediante llave privada: <code class="text-sky-300">ssh -i id_rsa usuario@ip</code>.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

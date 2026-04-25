@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA3 Prac_05 - Benchmarking de Gestión de Almacenamiento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .accent-text { color: #38bdf8; }
+        .criterion-badge { background: #0369a1; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .img-container { background: #1e293b; border: 1px solid #334155; border-radius: 1rem; overflow: hidden; }
+        .tool-card { border-top: 4px solid #38bdf8; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-700 pb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="px-3 py-1 bg-emerald-500 text-slate-900 text-xs font-bold rounded-full uppercase">RA3: Prácticas</span>
+                <span class="text-slate-400 text-sm">Módulo: Sistemas Informáticos</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Práctica 5: Benchmarking de Gestión de Almacenamiento</h1>
+            <p class="text-xl text-slate-400">Evaluación comparativa de utilidades de análisis de disco y despliegue de estrategias de limpieza de sistemas.</p>
+        </header>
+
+        <!-- Activity Overview -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="criterion-badge">CRITERIO H</span>
+                <h2 class="text-2xl font-bold text-white">Análisis de Eficiencia en el Uso del Disco</h2>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl border-l-4 border-emerald-500">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold accent-text mb-2">Objetivo:</h3>
+                    <p class="text-slate-300">Aprender a identificar "cuellos de botella" de almacenamiento mediante el uso de herramientas de análisis visual y de terminal, proponiendo la solución de limpieza más eficiente.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Tool 1: ncdu -->
+                    <div class="glass-card p-6 rounded-2xl tool-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-sky-500/20 rounded-lg">
+                                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m0 0l3-3m-3 3H3"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">ncdu (NCurses Disk Usage)</h4>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">Herramienta basada en texto (CLI) que escanea el disco y presenta los directorios ordenados por tamaño de forma interactiva.</p>
+                        <div class="img-container mb-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/NCurses_screen.png/640px-NCurses_screen.png" alt="Interfaz NCurses" class="w-full h-auto opacity-70">
+                            <p class="p-2 text-xs text-center text-slate-500 italic">Ejemplo de interfaz basada en consola (ncurses)</p>
+                        </div>
+                        <ul class="text-xs text-slate-500 space-y-1 list-disc pl-5">
+                            <li>Ventaja: Consumo mínimo, ideal para servidores remotos via SSH.</li>
+                            <li>Uso: Instalar con <code class="text-white">sudo apt install ncdu</code>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tool 2: Baobab -->
+                    <div class="glass-card p-6 rounded-2xl tool-card">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-sky-500/20 rounded-lg">
+                                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Baobab (Disk Usage Analyzer)</h4>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">Utilidad gráfica (GUI) que representa el espacio en disco mediante "mapas de anillos" o diagramas de árbol.</p>
+                        <div class="img-container mb-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Baobab_disk_usage_analyzer.png/640px-Baobab_disk_usage_analyzer.png" alt="Analizador de disco Baobab" class="w-full h-auto opacity-80">
+                            <p class="p-2 text-xs text-center text-slate-500 italic">Representación visual de círculos concéntricos de Baobab</p>
+                        </div>
+                        <ul class="text-xs text-slate-500 space-y-1 list-disc pl-5">
+                            <li>Ventaja: Identificación visual inmediata de las carpetas más pesadas.</li>
+                            <li>Uso: Instalado por defecto en GNOME.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                    <h4 class="text-white font-bold mb-4">📍 Tarea de Benchmarking:</h4>
+                    <p class="text-slate-300 mb-6">El alumno debe ejecutar ambas herramientas en su sistema y elaborar un informe técnico basado en los siguientes puntos:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-4 p-4 bg-slate-800 rounded-lg border border-slate-600">
+                            <span class="text-sky-400 font-bold">1.</span>
+                            <span class="text-slate-300 text-sm">Comparar el <strong class="text-white">tiempo de escaneo</strong>: ¿Cuál de las dos herramientas terminó primero de analizar el sistema?</span>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-slate-800 rounded-lg border border-slate-600">
+                            <span class="text-sky-400 font-bold">2.</span>
+                            <span class="text-slate-300 text-sm">Identificar el <strong class="text-white">Top 3 de archivos/carpetas</strong> más pesados encontrados.</span>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-slate-800 rounded-lg border border-slate-600">
+                            <span class="text-sky-400 font-bold">3.</span>
+                            <span class="text-slate-300 text-sm">Proponer una <strong class="text-white">estrategia de limpieza</strong>: ¿Qué archivos se pueden borrar sin comprometer la estabilidad del SO? (Ej: logs antiguos, caché de paquetes, temporales).</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                        <h4 class="text-emerald-400 font-bold mb-2 text-sm uppercase">Entregable</h4>
+                        <p class="text-slate-400 text-sm">Informe de Benchmarking (PDF) con capturas comparativas de ambas herramientas y la lista de archivos a eliminar.</p>
+                    </div>
+                    <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                        <h4 class="text-emerald-400 font-bold mb-2 text-sm uppercase">Verificación</h4>
+                        <p class="text-slate-400 text-sm">Criterio basado en la capacidad de analysis crítico y la correcta identificación de la herramienta más eficiente según el caso.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Conclusion -->
+        <footer class="glass-card p-6 rounded-2xl border-t-4 border-sky-500 bg-sky-900/10">
+            <div class="flex items-center gap-3 mb-3">
+                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h4 class="text-lg font-bold text-white">Conclusión del RA3</h4>
+            </div>
+            <p class="text-slate-400 text-sm italic">
+                "La gestión de la información no se trata solo de guardar datos, sino de saber dónde están, cuánto pesan y cómo recuperarlos en el menor tiempo posible. Dominar la combinación de CLI y GUI es lo que permite a un técnico optimizar la vida útil de cualquier servidor."
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

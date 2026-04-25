@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA6: Servidores de Red</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400 mb-4">
+            Servidores de Red
+        </h1>
+        <p class="text-slate-400 text-lg">Módulo: Sistemas Informáticos &bull; RA6: Operación de Sistemas en Red</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-12">
+        <!-- Sección 1: Almacenamiento en Red -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">💾</span> Almacenamiento: NAS vs SAN
+            </h2>
+            <p class="text-slate-300 mb-6">Según la forma en que el servidor expone los datos al cliente, hablamos de almacenamiento a nivel de archivos o a nivel de bloques.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-xl font-semibold text-emerald-400 mb-3">NAS (Network Attached Storage)</h3>
+                    <p class="text-sm text-slate-300 mb-4">Un servidor de archivos dedicado. El cliente accede a través de protocolos de red (SMB, NFS).</p>
+                    <ul class="text-xs text-slate-400 space-y-1">
+                        <li>• Se ve como una "unidad de red" o carpeta compartida.</li>
+                        <li>• Ideal para backups y archivos compartidos de oficina.</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-xl font-semibold text-emerald-400 mb-3">SAN (Storage Area Network)</h3>
+                    <p class="text-sm text-slate-300 mb-4">Una red de alta velocidad dedicada exclusivamente al almacenamiento de bloques (iSCSI, Fibre Channel).</p>
+                    <ul class="text-xs text-slate-400 space-y-1">
+                        <li>• El sistema operativo lo ve como un disco local (LUN).</li>
+                        <li>• Crítico para bases de datos y virtualización (VMware, Hyper-V).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Gestión de Impresión -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">🖨️</span> Servidores de Impresión
+            </h2>
+            <p class="text-slate-300 mb-6">Centralizan la gestión de los trabajos de impresión, permitiendo controlar colas, prioridades y permisos de uso.</p>
+            
+            <div class="bg-slate-800 p-6 rounded-xl overflow-x-auto mb-8">
+                <div class="mermaid flex justify-center">
+                graph TD
+                    C1(PC Cliente 1) -->|Trabajo Impresión| S[Servidor Impresión]
+                    C2(PC Cliente 2) -->|Trabajo Impresión| S
+                    S -->|Cola de Espera| Q[Spooler]
+                    Q -->|Procesado| P((Impresora Física))
+                    style S fill:#0369a1,stroke:#fff,color:#fff
+                    style Q fill:#0284c7,stroke:#fff,color:#fff
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h4 class="font-bold text-emerald-400 mb-2">CUPS (Common Unix Printing System)</h4>
+                    <p class="text-sm text-slate-400">El estándar en Linux/macOS. Utiliza el protocolo IPP para gestionar la comunicación con la impresora.</p>
+                </div>
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h4 class="font-bold text-emerald-400 mb-2">Print Server (Windows)</h4>
+                    <p class="text-sm text-slate-400">Integrado en el rol de servidor de Windows, permitiendo la gestión de colas global mediante GPOs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Conexión Remota -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">💻</span> Acceso Remoto y Consola
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Acceso CLI (Línea de Comandos)</h3>
+                    <p class="text-slate-300">El estándar es <strong class="text-white">SSH (Secure Shell)</strong>. Cifra todo el tráfico, eliminando la vulnerabilidad de Telnet.</p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Acceso GUI (Gráfico)</h3>
+                    <p class="text-slate-300">Utilizado para administración visual. Protocolos más comunes: <br>
+                    <span class="text-white font-mono bg-slate-800 px-1 rounded">RDP (Windows)</span>, <span class="text-white font-mono bg-slate-800 px-1 rounded">VNC (Multiplataforma)</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center p-8 bg-slate-800/30 rounded-3xl border border-slate-700">
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-mono uppercase tracking-widest text-slate-500">
+                <span># nas-san</span>
+                <span># print-spooler</span>
+                <span># ssh-rdp</span>
+                <span># remote-admin</span>
+            </div>
+            <p class="mt-4 text-slate-500 text-sm italic">Sistemas Informáticos &bull; Material Pedagógico de Referencia</p>
+        </footer>
+    </main>
+</body>
+</html>

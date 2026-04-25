@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA5 Prac 02: Cableado Estructurado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-sky-400">Práctica 02: Montaje de Red Local Cableada</h1>
+            <span class="criterion-badge">Criterio b) Redes Cableadas</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA5</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Taller de Conectividad Física</h2>
+            <p class="text-slate-300 mb-6">La base de cualquier red es la integridad física del medio. En este laboratorio validaremos la calidad del cableado y la enlace de capa 1.</p>
+            <div class="space-y-4">
+                <h3 class="font-semibold text-white">Tareas a realizar:</h3>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li>Crimpar un cable UTP Cat 6 siguiendo la norma <strong class="text-white">T568B</strong> (Blanco-Naranja, Naranja, Blanco-Verde, Azul, Blanco-Azul, Verde, Blanco-Marrón, Marrón).</li>
+                    <li>Conectar dos estaciones de trabajo a un Switch la capa de acceso.</li>
+                    <li>Verificar la sincronización del enlace (Link) mediante los LEDs del hardware y el comando <code class="bg-slate-800 px-1 rounded text-sky-300">ip link</code>.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Verificación</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Cable validado con tester de red (todos los hilos correctos).</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Estado de la interfaz: <code class="text-emerald-400 font-mono">UP</code>.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Comunicación exitosa entre equipos.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

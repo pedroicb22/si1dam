@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA5: Diagnóstico y Monitorización de Red</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400 mb-4">
+            Diagnóstico y Monitorización de Red
+        </h1>
+        <p class="text-slate-400 text-lg">Módulo: Sistemas Informáticos &bull; RA5: Interconexión de Sistemas en Red</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-12">
+        <!-- Sección 1: Herramientas CLI -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">🛠️</span> Kit de Supervivencia CLI
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Pruebas de Conectividad</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong class="text-white">ping:</strong> Verifica si un host está vivo mediante ICMP.</li>
+                        <li><strong class="text-white">traceroute (tracert):</strong> Muestra los saltos (routers) que da un paquete hasta el destino.</li>
+                        <li><strong class="text-white">nslookup / dig:</strong> Diagnóstico de resolución de nombres DNS.</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Inspección de Estado</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong class="text-white">ip addr:</strong> Muestra interfaces y sus IPs asignadas.</li>
+                        <li><strong class="text-white">netstat -tunlp:</strong> Lista puertos abiertos y procesos que los usan.</li>
+                        <li><strong class="text-white">arp -a:</strong> Muestra la tabla de correspondencia IP $\rightarrow$ MAC.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 terminal-box p-6 rounded-lg text-emerald-400">
+                <p class="text-slate-500 text-xs mb-2 uppercase font-bold italic">// Flujo típico de diagnóstico</p>
+                <code class="block">1. ¿Tengo IP? $\rightarrow$ <span class="text-white">ip addr</span><br>
+                2. ¿Llego a mi Gateway? $\rightarrow$ <span class="text-white">ping [Gateway_IP]</span><br>
+                3. ¿Tengo DNS? $\rightarrow$ <span class="text-white">ping google.com</span><br>
+                4. ¿Dónde se corta el camino? $\rightarrow$ <span class="text-white">traceroute 8.8.8.8</span></code>
+            </div>
+        </section>
+
+        <!-- Sección 2: Análisis de Tráfico -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">🔍</span> Captura y Monitorización
+            </h2>
+            <p class="text-slate-300 mb-6">Cuando los comandos básicos no bastan, recurrimos al análisis de paquetes (Packet Sniffing) para observar exactamente qué viaja por el cable.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-3">Wireshark / tcpdump</h3>
+                    <p class="text-sm text-slate-400 mb-4">Herramientas capaces de capturar tramas y reconstruir sesiones completas de TCP.</p>
+                    <div class="terminal-box p-3 rounded text-emerald-400 text-xs">
+                        <code class="block">sudo tcpdump -i eth0 port 80</code>
+                    </div>
+                </div>
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-3">SNMP (Simple Network Mgmt Protocol)</h3>
+                    <p class="text-sm text-slate-400">Permite monitorizar la carga de CPU de un switch, el ancho de banda de una interfaz o el estado de una fuente de alimentación de forma remota.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center p-8 bg-slate-800/30 rounded-3xl border border-slate-700">
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-mono uppercase tracking-widest text-slate-500">
+                <span># network-diagnostics</span>
+                <span># ping-traceroute</span>
+                <span># wireshark-tcpdump</span>
+                <span># snmp-monitoring</span>
+            </div>
+            <p class="mt-4 text-slate-500 text-sm italic">Sistemas Informáticos &bull; Material Pedagógico de Referencia</p>
+        </footer>
+    </main>
+</body>
+</html>

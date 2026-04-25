@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA2 Prac_02 - Licencias y Selección de SO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .accent-text { color: #38bdf8; }
+        .criterion-badge { background: #0369a1; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .scenario-box { background: rgba(15, 23, 42, 0.5); border-left: 4px solid #38bdf8; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-700 pb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="px-3 py-1 bg-emerald-500 text-slate-900 text-xs font-bold rounded-full uppercase">RA2: Prácticas</span>
+                <span class="text-slate-400 text-sm">Módulo: Sistemas Informáticos</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Práctica 2: Licencias y Selección de SO</h1>
+            <p class="text-xl text-slate-400">Análisis de costes, legalidad de software y consultoría técnica para despliegue de entornos operativos.</p>
+        </header>
+
+        <!-- Activity 1 -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="criterion-badge">CRITERIO C</span>
+                <h2 class="text-2xl font-bold text-white">Actividad 1: Consultoría de Selección de SO</h2>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl border-l-4 border-emerald-500">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold accent-text mb-2">Objetivo:</h3>
+                    <p class="text-slate-300">Saber elegir el sistema operativo adecuado basándose en el binomio <strong class="text-white">Compatibilidad de Software $\leftrightarrow$ Coste de Licencia</strong>.</p>
+                </div>
+
+                <div class="scenario-box p-6 rounded-r-xl mb-8">
+                    <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.226C14.467 12.81 11.79 10.25 8.76 7.68C10.33 6.14 12.12 5 14 5c3.309 0 6 2.691 6 6s-2.691 6-6 6y-1.774"></path></svg>
+                        Caso de Estudio: Agencia "PixelArt Studio"
+                    </h4>
+                    <p class="text-slate-300 italic leading-relaxed">
+                        La agencia necesita renovar su infraestructura. Han solicitado la implementación de:
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                            <li><strong>3 Estaciones de Trabajo High-End:</strong> Para edición de video 4K, renderizado 3D y diseño gráfico profesional.</li>
+                            <li><strong>1 Servidor de Archivos Central:</strong> Para almacenamiento masivo, copias de seguridad automáticas y acceso compartido para todos los diseñadores.</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/50 p-6 rounded-xl mb-6 border border-slate-700">
+                    <h4 class="text-white font-bold mb-4">📍 Tarea del Alumno:</h4>
+                    <div class="space-y-4 text-slate-300">
+                        <p>Diseña una propuesta técnica que incluya una tabla con las siguientes columnas:</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs border-collapse border border-slate-600">
+                                <thead>
+                                    <tr class="bg-slate-800 text-sky-400">
+                                        <th class="p-2 border border-slate-600">Puesto</th>
+                                        <th class="p-2 border border-slate-600">SO Propuesto</th>
+                                        <th class="p-2 border border-slate-600">Tipo de Licencia</th>
+                                        <th class="p-2 border border-slate-600">Justificación Técnica</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2 border border-slate-600 italic text-slate-500">Ejemplo: Servidor</td>
+                                        <td class="p-2 border border-slate-600">Ubuntu Server</td>
+                                        <td class="p-2 border border-slate-600">GNU GPL (Libre)</td>
+                                        <td class="p-2 border border-slate-600">Estabilidad, seguridad, coste 0 y gran soporte de redes.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-4"><strong>Análisis de Costes:</strong> Compara el coste aproximado de licenciar los 3 puestos con Windows 11 Pro frente a una alternativa Libre. ¿Es viable la alternativa libre para el flujo de trabajo de Adobe Creative Cloud?</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                        <h4 class="text-emerald-400 font-bold mb-2 text-sm uppercase">Entregable</h4>
+                        <p class="text-slate-400 text-sm">Documento de Propuesta Técnica (PDF) con cuadro comparativo y análisis de licencias.</p>
+                    </div>
+                    <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                        <h4 class="text-emerald-400 font-bold mb-2 text-sm uppercase">Verificación</h4>
+                        <p class="text-slate-400 text-sm">Coherencia entre el software requerido y el SO elegido. Justificación correcta del tipo de licencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Reference -->
+        <footer class="glass-card p-6 rounded-2xl border-t-4 border-sky-500 bg-sky-900/10">
+            <div class="flex items-center gap-3 mb-3">
+                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.447 9.246 5 7.5 5C4.42 5 2 7.42 2 10.5v5.5c0 1.25 1.12 2.25 2.5 2.25h11c1.38 0 2.5-1 2.5-2.25v-5.5C20 7.42 17.58 5 14.5 5c-1.746 0-3.332.447-4.5 1.253z"></path></svg>
+                <h4 class="text-lg font-bold text-white">Guía Rápida de Licencias</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-400 text-sm">
+                <div class="p-3 bg-slate-800/50 rounded border border-slate-700">
+                    <strong class="text-sky-400">Propietaria (EULA):</strong> Pagas por el derecho de uso, no eres dueño del software. Restricciones de instalación y copia.
+                </div>
+                <div class="p-3 bg-slate-800/50 rounded border border-slate-700">
+                    <strong class="text-sky-400">GNU GPL (Copyleft):</strong> Libre para usar, estudiar, modificar y distribuir. Obliga a que las mejoras sigan siendo libres.
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA4 Prac 08: Dimensionamiento de Recursos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-sky-400">Práctica 08: Dimensionamiento de Recursos</h1>
+            <span class="criterion-badge">Criterio h) Evaluación de necesidades</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA4</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Caso de Estudio: Entorno de Desarrollo Java/Postgres</h2>
+            <p class="text-slate-300 mb-6">Se requiere montar un entorno de desarrollo profesional. Debes actuar como consultor técnico y definir el hardware necesario.</p>
+            <div class="space-y-6">
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Componentes a Investigar</h4>
+                    <ul class="list-disc list-inside text-sm text-slate-400 space-y-1">
+                        <li><strong>IDE (IntelliJ IDEA):</strong> Consumo de RAM típico y requisitos de CPU.</li>
+                        <li><strong>JDK (Java Development Kit):</strong> Requisitos de memoria para la JVM.</li>
+                        <li><strong>PostgreSQL:</strong> Espacio en disco fragmented y memoria para cache de BD.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Entregable: Propuesta Técnica</h4>
+                    <p class="text-sm text-slate-400">Crea un documento comparando el hardware actual del laboratorio con el hardware ideal propuesto. Justifica la decisión basándote en los requerimientos oficiales de cada software.</p>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Justificación Técnica</h2>
+            <p class="text-slate-300">Explica por qué un SSD es crítico para la base de datos PostgreSQL en comparación con un HDD mecánico (concepto de IOPS).</p>
+        </section>
+    </main>
+</body>
+</html>

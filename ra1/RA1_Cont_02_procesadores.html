@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA1.02 - El Procesador (CPU) | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-font { font-family: 'Fira Code', monospace; }
+        .mermaid { background: white; border-radius: 0.5rem; padding: 1rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">RA1</span>
+                <h1 class="text-lg font-bold text-slate-800">El Procesador (CPU)</h1>
+            </div>
+            <div class="text-sm text-slate-500 italic">Módulo: Sistemas Informáticos</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+        <!-- Introduction Section -->
+        <section class="space-y-6">
+            <div class="border-l-4 border-orange-500 pl-4">
+                <h2 class="text-3xl font-extrabold text-slate-800">1.2 El Procesador (Central Processing Unit)</h2>
+                <p class="text-slate-600 mt-2 text-lg">El componente encargado de ejecutar las instrucciones de los programas mediante operaciones aritméticas y lógicas.</p>
+            </div>
+            <p class="text-slate-700">
+                La CPU es el cerebro del sistema. Su función es leer instrucciones desde la memoria principal, interpretarlas y ejecutar las acciones correspondientes. Para lograr esto, se basa en la <strong>Arquitectura de Von Neumann</strong>, donde los datos y las instrucciones residen en la misma memoria.
+            </p>
+        </section>
+
+        <!-- Internal Architecture Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                Arquitectura Interna de la CPU
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xl">ALU</div>
+                    <h4 class="font-bold text-slate-800">Unidad Aritmético-Lógica</h4>
+                    <p class="text-sm text-slate-600">Realiza todas las operaciones matemáticas (suma, resta) y lógicas (AND, OR, NOT, Comparaciones) necesarias para procesar los datos.</p>
+                </div>
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center font-bold text-xl">CU</div>
+                    <h4 class="font-bold text-slate-800">Unidad de Control</h4>
+                    <p class="text-sm text-slate-600">Actúa como la directora de orquesta. Decodifica las instrucciones y envía señales de control a la ALU, la memoria y los periféricos.</p>
+                </div>
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-3">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center font-bold text-xl">REG</div>
+                    <h4 class="font-bold text-slate-800">Registros Internos</h4>
+                    <p class="text-sm text-slate-600">Memorias ultrarrápidas de bajísima capacidad. Ejemplos: <span class="code-font text-xs bg-slate-100 px-1">PC</span> (Contador de Programa), <span class="code-font text-xs bg-slate-100 px-1">IR</span> (Registro de Instrucción).</p>
+                </div>
+            </div>
+
+            <div class="my-10">
+                <h4 class="text-center font-semibold text-slate-500 mb-4">Ciclo de Instrucción (Fetch-Decode-Execute)</h4>
+                <div class="mermaid">
+                    graph LR
+                        F[FETCH <br/> Buscar instrucción en RAM] --> D[DECODE <br/> Interpretar instrucción en CU]
+                        D --> E[EXECUTE <br/> Ejecutar operación en ALU]
+                        E --> W[WRITEBACK <br/> Guardar resultado en Reg/RAM]
+                        W --> F
+                        
+                        style F fill:#e1f5fe,stroke:#01579b
+                        style D fill:#fff9c4,stroke:#fbc02d
+                        style E fill:#f1f8e9,stroke:#33691e
+                        style W fill:#fce4ec,stroke:#880e4f
+                </div>
+            </div>
+        </section>
+
+        <!-- Instruction Sets Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                Sets de Instrucciones: RISC vs CISC
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-4">
+                    <h4 class="text-xl font-bold text-blue-700">CISC (Complex Instruction Set Computing)</h4>
+                    <p class="text-slate-600 text-sm">Enfoque en reducir el número de instrucciones por programa, creando instrucciones complejas que pueden realizar varias tareas en un solo ciclo.</p>
+                    <ul class="text-sm space-y-2 text-slate-600">
+                        <li class="flex items-start gap-2"><span>•</span> Instrucciones de longitud variable.</li>
+                        <li class="flex items-start gap-2"><span>•</span> Mayor uso de memoria para el hardware, menor para el código.</li>
+                        <li class="flex items-start gap-2"><span>•</span> Ejemplo: Arquitectura <strong>x86 (Intel, AMD)</strong>.</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-4">
+                    <h4 class="text-xl font-bold text-green-700">RISC (Reduced Instruction Set Computing)</h4>
+                    <p class="text-slate-600 text-sm">Enfoque en instrucciones simples y optimizadas que se ejecutan en un solo ciclo de reloj, delegando la complejidad al compilador.</p>
+                    <ul class="text-sm space-y-2 text-slate-600">
+                        <li class="flex items-start gap-2"><span>•</span> Instrucciones de longitud fija.</li>
+                        <li class="flex items-start gap-2"><span>•</span> Muy eficiente en consumo energético y calor.</li>
+                        <li class="flex items-start gap-2"><span>•</span> Ejemplo: Arquitectura <strong>ARM (Apple M1/M2, Qualcomm)</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interrupts Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                Gestión de Interrupciones
+            </h3>
+            
+            <div class="p-6 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg text-slate-700">
+                <p class="mb-4">
+                    Una <strong>interrupción</strong> es una señal enviada a la CPU que indica que un evento requiere atención inmediata. La CPU pausa su tarea actual, guarda el estado y ejecuta una rutina especial llamada <strong>ISR (Interrupt Service Routine)</strong>.
+                </p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-white p-4 rounded border border-orange-200">
+                        <strong class="block text-orange-700 mb-1">Interrupciones de Hardware</strong>
+                        <p>Generadas por periféricos. Ejemplo: Pulsar una tecla del teclado o la llegada de un paquete de red.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border border-orange-200">
+                        <strong class="block text-orange-700 mb-1">Interrupciones de Software (Traps)</strong>
+                        <p>Generadas por el propio programa. Ejemplo: División por cero o solicitud de un servicio al SO (System Call).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section class="space-y-8">
+            <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="bg-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                Rendimiento y Jerarquía de Memoria
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4 text-slate-700">
+                    <p>El rendimiento de una CPU no depende solo de la frecuencia (GHz), sino de la eficiencia en la gestión de datos:</p>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 items-start">
+                            <span class="font-bold text-orange-600">Núcleos y Hilos:</span> 
+                            <span>Un núcleo es una CPU física. El Hyper-Threading permite que un núcleo gestione dos hilos de ejecución simultáneos.</span>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="font-bold text-orange-600">Memoria Caché:</span> 
+                            <span>Memoria SRAM integrada en la CPU para evitar acceder a la lenta RAM. Se divide en L1 (ultrarrápida/pequeña), L2 y L3 (más lenta/grande).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-center font-bold text-slate-500 mb-4">Pirámide de Memoria (Velocidad vs Capacidad)</h4>
+                    <div class="mermaid">
+                        graph BT
+                            L1[Caché L1 <br/> Máxima Velocidad / Mínima Capacidad] --> L2[Caché L2]
+                            L2 --> L3[Caché L3]
+                            L3 --> RAM[Memoria RAM <br/> Media Velocidad / Media Capacidad]
+                            RAM --> DISK[SSD / HDD <br/> Baja Velocidad / Máxima Capacidad]
+                            
+                            style L1 fill:#ffcdd2,stroke:#b71c1c
+                            style L2 fill:#ffecb3,stroke:#f57f17
+                            style L3 fill:#c8e6c9,stroke:#1b5e20
+                            style RAM fill:#b3e5fc,stroke:#01579b
+                            style DISK fill:#d1c4e9,stroke:#4a148c
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reference Section -->
+        <section class="bg-slate-100 p-8 rounded-2xl border border-slate-200 space-y-4">
+            <h4 class="text-lg font-bold text-slate-800">📚 Referencias y Lecturas Recomendadas</h4>
+            <ul class="list-disc pl-6 text-sm text-slate-600 space-y-2">
+                <li><a href="https://es.wikipedia.org/wiki/Unidad_central_de_procesamiento" class="text-blue-600 hover:underline" target="_blank">Wikipedia: CPU - Arquitectura y Funcionamiento.</a></li>
+                <li><a href="https://www.intel.com/content/www/us/en/gaming/resources/cpu-architecture.html" class="text-blue-600 hover:underline" target="_blank">Intel Gaming: Understanding CPU Architecture.</a></li>
+                <li><a href="https://arm.com" class="text-blue-600 hover:underline" target="_blank">ARM Architecture: Conceptos de eficiencia y RISC.</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-xs">
+        <p>Sistemas Informáticos - RA1.02 - Procesadores | Generado para FP Superior de Informática</p>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+</body>
+</html>

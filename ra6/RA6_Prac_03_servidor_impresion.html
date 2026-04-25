@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA6 Prac 03: Servidor de Impresión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extbold text-sky-400">Práctica 03: Servidor de Impresión Centralizado</h1>
+            <span class="criterion-badge">Criterio c) Explotación de Servidores</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA6</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Gestión de Colas y Spooling</h2>
+            <p class="text-slate-300 mb-6">El objetivo es eliminar la necesidad de conectar cada PC a una impresora. Implementaremos un servidor que actúe como intermediario y gestor de trabajos.</p>
+            <div class="space-y-4">
+                <h3 class="font-semibold text-white">Tareas a realizar:</h3>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li>Instalar <strong class="text-white">CUPS</strong> (Linux) o el rol de Servidor de Impresión (Windows).</li>
+                    <li>Añadir una impresora de red mediante su dirección IP y configurar el controlador (driver) adecuado.</li>
+                    <li>Configurar la impresora como <strong class="text-white">Compartida</strong> para la red local.</li>
+                    <li>Desde un cliente, añadir la impresora compartida y enviar un documento de prueba.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Verificación de la Cola</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> El documento aparece en la cola de impresión del servidor.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> El servidor gestiona correctamente la prioridad si hay múltiples trabajos.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> La impresora física ejecuta el trabajo recibido.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

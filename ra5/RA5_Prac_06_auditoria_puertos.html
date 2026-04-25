@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA5 Prac 06: Auditoría de Puertos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extbold text-sky-400">Práctica 06: Auditoría de Puertos y Firewall</h1>
+            <span class="criterion-badge">Criterio f) Gestión de puertos</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA5</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Escaneo de Superficie de Ataque</h2>
+            <p class="text-slate-300 mb-6">Un administrador debe saber exactamente qué puertos están abiertos en sus servidores para evitar vulnerabilidades.</p>
+            <div class="space-y-4">
+                <h3 class="font-semibold text-white">Tareas a realizar:</h3>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li>Lanzar un escaneo completo de puertos utilizando <code class="bg-slate-800 px-1 rounded text-sky-300">nmap -sV [IP_Servidor]</code>.</li>
+                    <li>Identificar los servicios activos (ej. puerto 22 $\rightarrow$ OpenSSH).</li>
+                    <li>Configurar la herramienta <strong class="text-white">UFW (Uncomplicated Firewall)</strong> en Linux para cerrar todos los puertos excepto el 22 (SSH) y el 443 (HTTPS).</li>
+                    <li>Verificar el cierre del puerto mediante un nuevo escaneo.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Validación de Seguridad</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Lista de puertos abiertos inicial documentada.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Puerto objetivo aparece como <code class="text-red-400">filtered</code> o <code class="text-red-400">closed</code> tras aplicar regla de firewall.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Acceso SSH sigue operativo.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

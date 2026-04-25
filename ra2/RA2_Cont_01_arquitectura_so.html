@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA2 - Contenido 01: Arquitectura y Funciones del SO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+    <nav class="bg-slate-900 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tight">Sistemas Informáticos <span class="text-blue-400">| RA2</span></span>
+            <div class="space-x-4 text-sm">
+                <a href="RA2_Cont_02_licencias_y_clasi.html" class="hover:text-blue-400 transition">Siguiente: Licencias &rarr;</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white border-b border-slate-200 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center space-x-4 mb-4">
+                <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Teoría Técnica</span>
+                <span class="text-slate-500 text-sm">Bloque 01</span>
+            </div>
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Arquitectura y Funciones del Sistema Operativo</h1>
+            <p class="text-lg text-slate-600 max-w-3xl">
+                Análisis profundo de la capa de software que interrumpe la interacción directa entre el usuario y el hardware, gestionando los recursos críticos del sistema.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10 space-y-12">
+        
+        <!-- Concepto Fundamental -->
+        <section class="bg-white p-8 rounded-xl shadow-md border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                ¿Qué es un Sistema Operativo?
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <p class="text-slate-600">
+                        Un <strong class="text-slate-900">Sistema Operativo (SO)</strong> es el programa fundamental que gestiona el hardware de la computadora y proporciona servicios comunes para los programas de aplicación. Actúa como una capa de abstracción que oculta la complejidad del hardware al programador y al usuario.
+                    </p>
+                    <div class="p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-900 text-sm italic">
+                        "Sin el SO, cada programa tendría que saber exactamente cómo escribir datos en el sector X del disco duro o cómo enviar un voltaje específico al pin Y de la tarjeta de red."
+                    </div>
+                </div>
+                <div class="bg-slate-100 p-6 rounded-lg border border-slate-300">
+                    <h4 class="text-center text-xs uppercase tracking-widest mb-4 text-slate-500 font-bold">Modelo de Capas del Sistema</h4>
+                    <div class="mermaid flex justify-center">
+                        graph TD
+                        U[Usuario / Aplicaciones] --> S[Shell / Interfaz de Usuario]
+                        S --> K[Kernel / Núcleo]
+                        K --> H[Hardware / CPU / Memoria / I-O]
+                        style U fill:#fff,stroke:#333,stroke-width:2px
+                        style S fill:#e2e8f0,stroke:#475569,stroke-width:2px
+                        style K fill:#3b82f6,stroke:#1d4ed8,stroke-width:3px,color:#fff
+                        style H fill:#1e293b,stroke:#000,stroke-width:2px,color:#fff
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desglose de Elementos: Kernel, Shell, GUI -->
+        <section class="space-y-6">
+            <h2 class="text-3xl font-bold text-slate-900 px-2">Elementos Funcionales</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Kernel -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-blue-300 transition">
+                    <div class="text-blue-600 mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">El Kernel (Núcleo)</h3>
+                    <p class="text-sm text-slate-600">
+                        La parte más interna del SO. Se ejecuta en <strong class="text-slate-900">modo núcleo</strong> (privilegiado) y controla el acceso al hardware. Gestiona la memoria, el tiempo de CPU y los drivers.
+                    </p>
+                </div>
+                <!-- Shell -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-blue-300 transition">
+                    <div class="text-blue-600 mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">El Shell (Intérprete)</h3>
+                    <p class="text-sm text-slate-600">
+                        Capa que envuelve al núcleo. Recibe comandos del usuario, los interpreta y los traduce en <strong class="text-slate-900">System Calls</strong> (llamadas al sistema) que el Kernel puede procesar.
+                    </p>
+                </div>
+                <!-- GUI -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-blue-300 transition">
+                    <div class="text-blue-600 mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13h16M12 4v16"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">GUI / Interfaz</h3>
+                    <p class="text-sm text-slate-600">
+                        Capa visual (ventanas, iconos, menús). Es una herramienta de usabilidad que permite interactuar con el Shell y el Kernel sin necesidad de conocer la sintaxis de comandos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funciones Principales del SO -->
+        <section class="bg-white p-8 rounded-xl shadow-md border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Gestión de Recursos Críticos</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead class="bg-slate-100 text-slate-600 uppercase text-xs">
+                        <tr>
+                            <th class="p-4 border border-slate-200">Función de Gestión</th>
+                            <th class="p-4 border border-slate-200">¿Qué hace exactamente el SO?</th>
+                            <th class="p-4 border border-slate-200">Concepto Clave</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">Gestión de Procesos</td>
+                            <td class="p-4 border border-slate-200">Decide qué programa usa la CPU en cada momento y por cuánto tiempo. Maneja el cambio de contexto.</td>
+                            <td class="p-4 border border-slate-200 bg-blue-50 font-mono text-xs">Planificación (Scheduler)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">Gestión de Memoria</td>
+                            <td class="p-4 border border-slate-200">Asigna espacios de RAM a cada proceso y evita que un programa escriba en el espacio de otro.</td>
+                            <td class="p-4 border border-slate-200 bg-blue-50 font-mono text-xs">Memoria Virtual / Paginación</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">Gestión de E/S</td>
+                            <td class="p-4 border border-slate-200">Administra el flujo de datos entre el sistema y los periféricos (teclado, ratón, discos) mediante drivers.</td>
+                            <td class="p-4 border border-slate-200 bg-blue-50 font-mono text-xs">Interrupciones / Buffers</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-slate-200 font-bold">Gestión de Archivos</td>
+                            <td class="p-4 border border-slate-200">Organiza la información en el almacenamiento físico mediante estructuras lógicas (directorios, extensiones).</td>
+                            <td class="p-4 border border-slate-200 bg-blue-50 font-mono text-xs">Sistema de Archivos (FS)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Evolución de los Sistemas -->
+        <section class="bg-slate-900 text-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Evolución Histórica y Paradigmática
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="bg-blue-500 text-xs font-bold px-2 py-1 rounded">Sistemas Monotarea</span>
+                        <p class="text-sm text-slate-400">Un solo proceso en ejecución. El CPU espera a que el proceso termine antes de iniciar otro. (Ej: MS-DOS temprano).</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="bg-blue-500 text-xs font-bold px-2 py-1 rounded">Sistemas Multitarea</span>
+                        <p class="text-sm text-slate-400">Capacidad de ejecutar múltiples procesos "aparentemente" a la vez mediante el reparto del tiempo del CPU.</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="bg-blue-500 text-xs font-bold px-2 py-1 rounded">Sistemas Multiusuario</span>
+                        <p class="text-sm text-slate-400">Permiten que varios usuarios accedan a los recursos del sistema simultáneamente, gestionando permisos y cuotas.</p>
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                    <h4 class="text-sm font-bold text-blue-400 mb-2">Dato Técnico: Sistemas Distribuidos</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Son aquellos que gestionan un grupo de computadoras independientes y las hacen parecer como una sola unidad para el usuario. El SO se encarga de la comunicación entre nodos y el balanceo de carga. Es la base de la infraestructura actual de la Nube (Cloud Computing).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm mb-4">&copy; 2026 - Módulo de Sistemas Informáticos - FP Superior</p>
+            <div class="flex justify-center space-x-6 text-xs uppercase tracking-widest font-bold">
+                <a href="RA2_Cont_02_licencias_y_clasi.html" class="text-blue-400 hover:text-white transition">Cargar Siguiente Módulo &rarr;</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

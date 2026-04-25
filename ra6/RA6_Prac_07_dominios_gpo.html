@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA6 Prac 07: Dominios y Active Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extbold text-sky-400">Práctica 07: Laboratorio de Dominios y GPO</h1>
+            <span class="criterion-badge">Criterio g) Configuración de dominios</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA6</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Administración Centralizada</h2>
+            <p class="text-slate-300 mb-6">Implementaremos la estructura de un entorno corporativo donde la política de seguridad se define en el servidor y se propaga automáticamente a los clientes.</p>
+            <div class="space-y-6">
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Fase 1: El Controlador de Dominio</h4>
+                    <p class="text-sm text-slate-400">Instalar el rol de AD DS (Active Directory Domain Services) y elevar el servidor a Controlador de Dominio (ej. <code class="text-sky-300">empresa.local</code>).</p>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-white mb-2">Fase 2: Organización y Políticas</h4>
+                    <ul class="list-disc list-inside text-sm text-slate-400 space-y-1">
+                        <li>Crear una Unidad Organizativa (OU) llamada <strong class="text-white">Departamento_IT</strong>.</li>
+                        <li>Crear una GPO vinculada a esa OU que deshabilite la ejecución de la Consola de Comandos (CMD) y la edición del Registro.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Verificación de la Política</h2>
+            <div class="space-y-3 text-slate-300">
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Unir un PC cliente al dominio <code class="text-sky-300">empresa.local</code>.</div>
+                <div class="flex items-center"><input type="checkbox" class="mr-3"> Iniciar sesión con un usuario de la OU IT y comprobar que el CMD está bloqueado por el administrador.</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

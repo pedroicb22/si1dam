@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA7: Productividad y Colaboración</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-box { background: #0a0a0a; border-left: 4px solid #10b981; font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl font-extbold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400 mb-4">
+            Productividad y Colaboración
+        </h1>
+        <p class="text-slate-400 text-lg">Módulo: Sistemas Informáticos &bull; RA7: Elaboración de Documentación y Aplicaciones de Propósito General</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-12">
+        <!-- Sección 1: Ofimática de Alto Nivel -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">📝</span> Ofimática Moderna para Técnicos
+            </h2>
+            <p class="text-slate-300 mb-6">La ofimática no es solo escribir texto; es crear documentos estructurados que sirvan como manuales técnicos profesionales.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-3">Procesadores de Texto</h3>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li>• <strong class="text-white">Estilos:</strong> Evitar el formato manual; usar H1, H2, etc.</li>
+                        <li>• <strong class="text-white">Índice Automático:</strong> Generado a partir de los estilos.</li>
+                        <li>• <strong class="text-white">Referencias:</strong> Citas bibliográficas y notas al pie.</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-3">Hojas de Cálculo</h3>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li>• <strong class="text-white">Tablas Dinámicas:</strong> Resumen de grandes volúmenes de datos.</li>
+                        <li>• <strong class="text-white">Fórmulas lógicas:</strong> Uso de SI, BUSCARV, SUMAR.SI.</li>
+                        <li>• <strong class="text-white">Gráficos:</strong> Visualización de rendimiento y consumo.</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-3">Presentaciones</h3>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li>• <strong class="text-white">Sintesis:</strong> Menos texto, más esquemas.</li>
+                        <li>• <strong class="text-white">Interactividad:</strong> Hipervínculos y transiciones.</li>
+                        <li>• <strong class="text-white">Narrativa:</strong> Enfoque en el problema y la solución.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Trabajo Colaborativo y Git -->
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h2 class="text-2xl font-bold text-sky-300 mb-6 flex items-center">
+                <span class="mr-3 text-3xl">🤝</span> Colaboración en la Nube y Control de Versiones
+            </h2>
+            <p class="text-slate-300 mb-6">El trabajo técnico moderno es distribuido. Ya no enviamos "Manual_Final_v2_SÍ_ESTE_SI.doc", sino que trabajamos sobre una única fuente de verdad.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Herramientas Cloud (SaaS)</h3>
+                    <p class="text-sm text-slate-300">Google Workspace y MS 365 permiten la <strong class="text-white">co-edición en tiempo real</strong>, eliminando la duplicidad de archivos y facilitando la revisión mediante comentarios y sugerencias.</p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-400">Control de Versiones (Git)</h3>
+                    <p class="text-sm text-slate-300">Para la documentación técnica avanzada, se utiliza Git. Permite rastrear cada cambio, volver a versiones anteriores y trabajar en ramas (branches) independientes.</p>
+                    <div class="terminal-box p-4 rounded-lg text-emerald-400 text-xs">
+                        <code class="block">git add . # Preparar cambios</code>
+                        <code class="block">git commit -m "Añadido RA7" # Guardar versión</code>
+                        <code class="block">git push origin main # Subir a GitHub/GitLab</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center p-8 bg-slate-800/30 rounded-3xl border border-slate-700">
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-mono uppercase tracking-widest text-slate-500">
+                <span># productivity-tools</span>
+                <span># cloud-collaboration</span>
+                <span># git-versioning</span>
+                <span># technical-docs</span>
+            </div>
+            <p class="mt-4 text-slate-500 text-sm italic">Sistemas Informáticos &bull; Material Pedagógico de Referencia</p>
+        </footer>
+    </main>
+</body>
+</html>

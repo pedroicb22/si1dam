@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA4 Prac 06: Análisis de Logs y Rendimiento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .criterion-badge { background: #0ea5e9; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-8 font-sans">
+    <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-sky-400">Práctica 06: Logs y Rendimiento</h1>
+            <span class="criterion-badge">Criterio f) Monitorización del sistema</span>
+        </div>
+        <p class="text-slate-400">Módulo: Sistemas Informáticos &bull; RA4</p>
+    </header>
+    <main class="max-w-5xl mx-auto space-y-8">
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Análisis Forense de Eventos</h2>
+            <p class="text-slate-300 mb-6">El sistema debe ser capaz de registrar errores. Vamos a provocar un fallo de seguridad y rastrearlo.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="font-semibold text-white">Fase 1: Provocación</h3>
+                    <p class="text-sm text-slate-400">Intenta acceder a la carpeta <code>/root</code> como usuario estándar. Recibirás un "Permission Denied".</p>
+                    <div class="bg-black p-3 rounded text-emerald-400 font-mono text-xs">cd /root</div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-semibold text-white">Fase 2: Rastreo</h3>
+                    <p class="text-sm text-slate-400">Busca la entrada de error en el log de autenticación del sistema.</p>
+                    <div class="bg-black p-3 rounded text-emerald-400 font-mono text-xs">grep "denied" /var/log/auth.log</div>
+                </div>
+            </div>
+        </section>
+        <section class="glass p-8 rounded-3xl">
+            <h2 class="text-xl font-bold text-emerald-400 mb-4">Métricas de Rendimiento</h2>
+            <p class="text-slate-300 mb-6">Ejecuta un proceso pesado (ej. <code>stress</code> o una compilación larga) y monitoriza el sistema durante 5 minutos usando <code>vmstat</code> o <code>sar</code>.</p>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <p class="text-sm text-slate-400">Analiza los siguientes puntos:</p>
+                <ul class="list-disc list-inside text-xs text-slate-300 mt-2 space-y-1">
+                    <li>% de uso de CPU (User vs System).</li>
+                    <li>Tasa de Swap (intercambio de memoria).</li>
+                    <li>Carga media (Load Average).</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
